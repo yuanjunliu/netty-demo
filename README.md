@@ -5,6 +5,8 @@ netty-demo
 - nio是jdk1.4引入的
 - 异步io使用的是SocketChannel 套接字通道api
 
+## NIO
+
 ### Buffer
 
 - bio是面向流的, 数据都是直接放到stream中
@@ -24,3 +26,13 @@ netty-demo
 - Selector是Java NIO编程的基础
 
 - Selector不断轮询注册在其上的Channel
+
+```
+NIO只是非阻塞IO
+还是需要我们编写循环代码去处理
+```
+## AIO
+
+- JDK1.7 引入新的异步通道的概念, 这时的NIO称为 NIO 2.0
+- 提供了异步文件通道和一般套接字通道
+- NIO 2.0 的异步套接字通道是真正的异步非阻塞IO, 对应Unix网络编程的事件驱动I/O (AIO)
