@@ -1,4 +1,4 @@
-package juns.demo.bio;
+package juns.demo.jdk.bio;
 
 import org.apache.commons.io.IOUtils;
 

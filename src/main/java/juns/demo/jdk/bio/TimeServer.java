@@ -1,6 +1,5 @@
-package juns.demo.fnio;
+package juns.demo.jdk.bio;
 
-import juns.demo.bio.TimeServerHandle;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -19,16 +18,16 @@ public class TimeServer {
         try {
             server = new ServerSocket(port);
             System.out.println("The time server is start in port: " + port);
-            TimeServerHandlerExecutePool singleExecutor = new TimeServerHandlerExecutePool(50, 10000);
             Socket socket = null;
             while (true) {
                 // 线程会阻塞在这, 只到有连接进来
                 socket = server.accept();
                 System.out.println("accept conn from " + socket.getInetAddress());
-                singleExecutor.execute(new TimeServerHandle(socket));
+                new Thread(new TimeServerHandle(socket)).start();
             }
         } finally {
             IOUtils.closeQuietly(server);
         }
     }
+
 }
