@@ -20,7 +20,8 @@ public class TimeServer {
             System.out.println("The time server is start in port: " + port);
             Socket socket = null;
             while (true) {
-                // 线程会阻塞在这, 只到有连接进来
+                // main线程会阻塞在这, 只到有连接进来
+                // 但是线程是RUNNABLE状态的, 是会消耗CPU的
                 socket = server.accept();
                 System.out.println("accept conn from " + socket.getInetAddress());
                 new Thread(new TimeServerHandle(socket)).start();
