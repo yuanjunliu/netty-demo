@@ -1,4 +1,6 @@
-package juns.demo.netty.codec.jdk;
+package juns.demo.netty.codec;
+
+import org.msgpack.annotation.Message;
 
 import java.io.Serializable;
 import java.nio.ByteBuffer;
@@ -6,6 +8,7 @@ import java.nio.ByteBuffer;
 /**
  * Created by 01380763 on 2019/10/12.
  */
+@Message
 public class UserInfo implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -61,5 +64,13 @@ public class UserInfo implements Serializable {
         byte[] result = new byte[buffer.remaining()];
         buffer.get(result);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userName='" + userName + '\'' +
+                ", userID=" + userID +
+                '}';
     }
 }

@@ -1,5 +1,7 @@
 package juns.demo.netty.codec.jdk;
 
+import juns.demo.netty.codec.UserInfo;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;

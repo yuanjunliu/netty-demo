@@ -1,0 +1,12 @@
+package netty;
+option java_package = "juns.demo.netty.codec.protobuf";
+option java_outer_classname = "SubscribeReqProto";
+
+// https://www.cnblogs.com/liugh/p/7505533.html
+
+message SubscribeReq {
+    required int32 subReqId = 1;
+    required string userName = 2;
+    required string productName = 3;
+    repeated string address = 4;
+}
