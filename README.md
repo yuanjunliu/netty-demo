@@ -18,7 +18,7 @@ TCP4层模型与socket接口之间关系如下图
 ![](https://img-blog.csdn.net/20170207231402155?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemVyb193aXR0eQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 - TCP 状态
-
+![](https://github.com/yuanjunliu/netty-demo/blob/master/src/main/resources/imgs/tcp%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2.png)
 ![](https://img-blog.csdn.net/20170208150054638?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemVyb193aXR0eQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 [参考](https://blog.csdn.net/zero_witty/article/details/54920148)
