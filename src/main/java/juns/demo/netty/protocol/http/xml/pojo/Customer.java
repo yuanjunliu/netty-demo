@@ -1,4 +1,4 @@
-package juns.demo.netty.http.xml.pojo;
+package juns.demo.netty.protocol.http.xml.pojo;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package juns.demo.netty.http;
+package juns.demo.netty.protocol.http;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

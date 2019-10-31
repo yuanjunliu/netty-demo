@@ -12,18 +12,32 @@ import java.util.concurrent.TimeUnit;
 public class Test {
     Executor executor = Executors.newFixedThreadPool(4);
 
+    private class InnerClass {
+        List<String> sharedList = new ArrayList<>();
+
+        public void thread(String x) {
+            System.out.println(sharedList.hashCode());
+            synchronized (sharedList) {
+                if (!sharedList.contains(x)) {
+                    System.out.println("add " + x);
+                    sharedList.add(x);
+                }
+            }
+
+        }
+    }
 
     public void test() throws InterruptedException {
-        List<String> sharedList = new ArrayList<>();
+        InnerClass innerClass = new InnerClass();
         for (int i = 0; i < 3; i++) {
             executor.execute(() -> {
                 for (int j = 0; j < 10; j++) {
-                    thread(sharedList, j + "");
+                    innerClass.thread(j + "");
                 }
             });
         }
         TimeUnit.SECONDS.sleep(5);
-        System.out.println(sharedList);
+//        System.out.println(sharedList);
     }
 
     public void thread(final List<String> sharedList, String x) {

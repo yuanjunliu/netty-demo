@@ -1,4 +1,4 @@
-package juns.demo.netty.http.xml.server;
+package juns.demo.netty.protocol.http.xml.server;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
@@ -12,9 +12,9 @@ import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
-import juns.demo.netty.http.xml.codec.HttpXmlRequestDecoder;
-import juns.demo.netty.http.xml.codec.HttpXmlResponseEncoder;
-import juns.demo.netty.http.xml.pojo.Order;
+import juns.demo.netty.protocol.http.xml.codec.HttpXmlRequestDecoder;
+import juns.demo.netty.protocol.http.xml.codec.HttpXmlResponseEncoder;
+import juns.demo.netty.protocol.http.xml.pojo.Order;
 
 import java.net.InetSocketAddress;
 
@@ -33,7 +33,7 @@ public class HttpXmlServer {
                         @Override
                         protected void initChannel(SocketChannel ch)
                                 throws Exception {
-                            ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG));
+//                            ch.pipeline().addLast(new LoggingHandler(LogLevel.DEBUG));
 
                             ch.pipeline().addLast("http-decoder",
                                     new HttpRequestDecoder());
@@ -43,7 +43,7 @@ public class HttpXmlServer {
                                     .addLast(
                                             "xml-decoder",
                                             new HttpXmlRequestDecoder(
-                                                    Order.class, true));
+                                                    Order.class, false));
                             ch.pipeline().addLast("http-encoder",
                                     new HttpResponseEncoder());
                             ch.pipeline().addLast("xml-encoder",
@@ -63,7 +63,7 @@ public class HttpXmlServer {
     }
 
     public static void main(String[] args) throws Exception {
-        int port = 8080;
+        int port = 1000;
         if (args.length > 0) {
             try {
                 port = Integer.parseInt(args[0]);

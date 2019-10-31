@@ -1,4 +1,4 @@
-package juns.demo.netty.http.xml.pojo;
+package juns.demo.netty.protocol.http.xml.pojo;
 
 /**
  * Created by 01380763 on 2019/10/17.

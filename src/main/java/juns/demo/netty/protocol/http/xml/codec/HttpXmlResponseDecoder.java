@@ -1,7 +1,6 @@
-package juns.demo.netty.http.xml.codec;
+package juns.demo.netty.protocol.http.xml.codec;
 
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.FullHttpResponse;
 
 import java.util.List;

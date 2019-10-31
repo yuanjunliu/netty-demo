@@ -1,11 +1,11 @@
-package juns.demo.netty.http.xml.client;
+package juns.demo.netty.protocol.http.xml.client;
 
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import juns.demo.netty.http.xml.codec.HttpXmlRequest;
-import juns.demo.netty.http.xml.codec.HttpXmlResponse;
-import juns.demo.netty.http.xml.pojo.OrderFactory;
+import juns.demo.netty.protocol.http.xml.codec.HttpXmlRequest;
+import juns.demo.netty.protocol.http.xml.codec.HttpXmlResponse;
+import juns.demo.netty.protocol.http.xml.pojo.OrderFactory;
 
 /**
  * Created by 01380763 on 2019/10/23.
@@ -14,14 +14,16 @@ public class HttpXmlClientHandler extends  SimpleChannelInboundHandler<HttpXmlRe
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        HttpXmlRequest request = new HttpXmlRequest(null,
-                OrderFactory.create(123));
-        ChannelFuture f = ctx.writeAndFlush(request);
-        f.addListener(future -> {
-            if (!future.isSuccess()) {
-                future.cause().printStackTrace();
-            }
-        });
+        for (int i = 10; i < 20; i++) {
+            HttpXmlRequest request = new HttpXmlRequest(null,
+                    OrderFactory.create(i));
+            ChannelFuture f = ctx.writeAndFlush(request);
+            f.addListener(future -> {
+                if (!future.isSuccess()) {
+                    future.cause().printStackTrace();
+                }
+            });
+        }
     }
 
     @Override

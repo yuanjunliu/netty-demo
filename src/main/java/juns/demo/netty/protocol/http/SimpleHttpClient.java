@@ -1,4 +1,4 @@
-package juns.demo.netty.http.xml.client;
+package juns.demo.netty.protocol.http;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,23 +8,16 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-import io.netty.handler.codec.http.HttpClientCodec;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpRequestEncoder;
 import io.netty.handler.codec.http.HttpResponseDecoder;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
-import juns.demo.netty.http.xml.codec.HttpXmlRequestEncoder;
-import juns.demo.netty.http.xml.codec.HttpXmlResponseDecoder;
-import juns.demo.netty.http.xml.pojo.Order;
 
 import java.net.InetSocketAddress;
 
 /**
- * Created by 01380763 on 2019/10/23.
+ * Created by 01380763 on 2019/10/31.
  */
-public class HttpXmlClient {
+public class SimpleHttpClient {
     public void connect(int port) throws Exception {
         // 配置客户端NIO线程组
         EventLoopGroup group = new NioEventLoopGroup();
@@ -36,22 +29,17 @@ public class HttpXmlClient {
                         @Override
                         public void initChannel(SocketChannel ch)
                                 throws Exception {
-                            ch.pipeline().addLast(new LoggingHandler(LogLevel.ERROR));
+//                            ch.pipeline().addLast(new LoggingHandler(LogLevel.ERROR));
                             ch.pipeline().addLast("http-decoder",
                                     new HttpResponseDecoder());
                             ch.pipeline().addLast("http-aggregator",
                                     new HttpObjectAggregator(65536));
-                            // XML解码器
-                            ch.pipeline().addLast(
-                                    "xml-decoder",
-                                    new HttpXmlResponseDecoder(Order.class,
-                                            true));
+
                             ch.pipeline().addLast("http-encoder",
                                     new HttpRequestEncoder());
-                            ch.pipeline().addLast("xml-encoder",
-                                    new HttpXmlRequestEncoder());
+
                             ch.pipeline().addLast("xmlClientHandler",
-                                    new HttpXmlClientHandler());
+                                    new SimpleHttpClientHandler());
                         }
                     });
 
@@ -79,6 +67,6 @@ public class HttpXmlClient {
                 // 采用默认值
             }
         }
-        new HttpXmlClient().connect(port);
+        new SimpleHttpClient().connect(port);
     }
 }

@@ -1,4 +1,4 @@
-package juns.demo.netty.http;
+package juns.demo.netty.protocol.http;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -6,15 +6,12 @@ import io.netty.channel.*;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.stream.ChunkedFile;
 import io.netty.util.CharsetUtil;
-import sun.security.timestamp.TSRequest;
 
 import javax.activation.MimetypesFileTypeMap;
 import java.io.File;
 import java.io.RandomAccessFile;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.nio.charset.Charset;
-import java.util.Date;
 import java.util.regex.Pattern;
 
 import static io.netty.handler.codec.http.HttpHeaderValues.KEEP_ALIVE;

@@ -1,8 +1,7 @@
-package juns.demo.netty.http.xml;
+package juns.demo.netty.protocol.http.xml;
 
-import juns.demo.netty.http.xml.pojo.Order;
-import juns.demo.netty.http.xml.pojo.OrderFactory;
-import org.apache.tools.ant.taskdefs.condition.Or;
+import juns.demo.netty.protocol.http.xml.pojo.Order;
+import juns.demo.netty.protocol.http.xml.pojo.OrderFactory;
 import org.jibx.runtime.*;
 
 import java.io.IOException;

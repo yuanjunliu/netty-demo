@@ -1,4 +1,4 @@
-package juns.demo.netty.http.xml.codec;
+package juns.demo.netty.protocol.http.xml.codec;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -21,7 +21,7 @@ public class HttpXmlRequestEncoder extends AbstractHttpXmlEncoder<HttpXmlRequest
             HttpHeaders headers = request.headers();
             headers.set(HttpHeaders.Names.HOST, InetAddress.getLocalHost()
                     .getHostAddress());
-            headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.CLOSE);
+            headers.set(HttpHeaders.Names.CONNECTION, HttpHeaders.Values.KEEP_ALIVE);
             headers.set(HttpHeaders.Names.ACCEPT_ENCODING,
                     HttpHeaders.Values.GZIP.toString() + ','
                             + HttpHeaders.Values.DEFLATE.toString());

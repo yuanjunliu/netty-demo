@@ -1,4 +1,4 @@
-package juns.demo.netty.http.xml;
+package juns.demo.netty.protocol.http.xml;
 
 import org.jibx.binding.Compile;
 
